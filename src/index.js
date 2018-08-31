@@ -27,7 +27,7 @@ class User extends React.Component {
             <div>This week</div>
           </div>
           <div className="points-month">
-            <h2>{this.props.data.reputation_change_week <= 0 || '+'}{this.props.data.reputation_change_month}</h2>
+            <h2>{this.props.data.reputation_change_month <= 0 || '+'}{this.props.data.reputation_change_month}</h2>
             <div>This month</div>
           </div>
           <div className="activity">
