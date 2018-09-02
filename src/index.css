@@ -1,59 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:300);
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Raleway', sans-serif;
     background-color: #CCC;
-    margin: 0;
-}
-
-.dashboard {
-    margin: 100px auto;
-    max-width: 600px;
-    text-align: center;
-}
-
-.leader-board {
+    margin: 1em;
     color: #333;
-    margin: 2em 0;
-}
-
-.user {
-    min-height: 68px;
-    margin-left: 30px;
-    margin-bottom: 10px;
-    clear: both;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .2);
-    border-radius: 0 32px 32px 0;
-    background-color: #EEE;
-}
-
-.profile-image {
-    border: 4px solid #EEE;
-    margin-left: -30px;
-    background-color: #CCC;
-    background-size: cover;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    float: left;
-}
-
-.profile-info {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding-left: 1em;
-    font-size: .75em;
-}
-
-.activity svg {
-    margin: -5px;
-}
-
-.name {
-    text-align: left;
 }
 
 h1 {
-    letter-spacing: .02em;
+    font-size: 1.6em;
+    margin-top: 0;
 }
 
 h2,
@@ -62,5 +17,126 @@ h3 {
 }
 
 h3 {
-    padding-top: 5px;
+    padding-top: .5em;
+}
+
+.react-bodymovin-container {
+    width: 150px;
+    margin: auto;
+}
+
+.dashboard {
+    margin: 50px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.leader-board {
+    margin: 2em 0;
+}
+
+.usr {
+    min-height: calc(4em + 8px);
+    margin-left: 2em;
+    margin-bottom: .5em;
+    clear: both;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .2);
+    border-radius: 0 3em 3em 0;
+    background-color: #EEE;
+}
+
+.usr-img {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .2);
+    border: 4px solid #EEE;
+    background-color: #CCC;
+    background-size: cover;
+    height: 4em;
+    width: 4em;
+    margin-left: -2em;
+    border-radius: 50%;
+    float: left;
+}
+
+.usr-info {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding-left: 1em;
+    font-size: .75em;
+}
+
+.usr-name {
+    grid-column: 1 / 6;
+    text-align: left;
+}
+
+.usr-points-week {
+    grid-column: 6/8;
+}
+
+.usr-points-month {
+    grid-column: 8/10;
+}
+
+.usr-activity {
+    grid-column: 10/12;
+}
+
+.usr-activity svg {
+    margin: -5px;
+    width: 1.3em;
+    height: 1.3em;
+}
+
+input {
+    display: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+input:checked+label {
+    border-bottom: 1px solid #666;
+}
+
+@media (max-width: 900px) {
+    .dashboard {
+        margin: 40px auto;
+    }
+    .usr {
+        font-size: .9em;
+    }
+    .react-bodymovin-container {
+        width: 100px;
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        margin: 25px auto;
+    }
+    .usr {
+        font-size: .8em;
+    }
+    .react-bodymovin-container {
+        width: 75px;
+    }
+    h1 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard {
+        margin: 15px auto;
+    }
+    .usr {
+        font-size: .7em;
+    }
+    h1 {
+        font-size: 1em;
+    }
 }
