@@ -49,6 +49,24 @@ const Item = posed.div({
   }
 });
 
+const Rep = ({ data }) => {
+  if (data.badge_counts) {
+    return (
+      <div>
+        <span title="Overall reputation">{data.reputation}</span>
+        <span className="badge bronze" title="Bronze badges">{data.badge_counts.bronze}</span>
+        <span className="badge silver" title="Silver badges">{data.badge_counts.silver}</span>
+        <span className="badge gold" title="Gold badges">{data.badge_counts.gold}</span>
+      </div>
+    )
+  }
+  else {
+    return (
+      <span title="Overall reputation">{data.reputation}</span>
+    )
+  }
+}
+
 class User extends React.Component {
   render() {
     return (
@@ -62,7 +80,7 @@ class User extends React.Component {
         <div className="usr-info">
           <div className="usr-name">
             <h3>{this.props.data.display_name}</h3>
-            <span>{this.props.data.reputation}</span>
+            <Rep data={this.props.data} />
           </div>
           <div className="usr-points-week">
             <h2>{this.props.data.reputation_change_week <= 0 || '+'}{this.props.data.reputation_change_week}</h2>
@@ -72,7 +90,7 @@ class User extends React.Component {
             <h2>{this.props.data.reputation_change_month <= 0 || '+'}{this.props.data.reputation_change_month}</h2>
             <span>This month</span>
           </div>
-          <div className="usr-activity">
+          <div className="usr-activity" title="Last seen on StackExchange">
             <h2><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 125.66 125.66">
               <path fill="#333" d="M88.95 67.73a2.8 2.8 0 0 1-2.8 2.8H68.99a2.78 2.78 0 0 1-2.76-2.41l-3.04-21.77-6.12 56.01a2.8 2.8 0 0 1-2.56 2.48h-.23a2.77 2.77 0 0 1-2.69-2.03l-9.12-32.46-8.99 17.07a2.8 2.8 0 0 1-5.2-.62L23.9 69.31H2.8a2.8 2.8 0 0 1 0-5.6H26.1a2.8 2.8 0 0 1 2.72 2.12l3.12 12.49 8.84-16.8a2.74 2.74 0 0 1 2.77-1.48c1.14.12 2.09.93 2.41 2.02l7.12 25.32 7.02-64.09a2.79 2.79 0 0 1 2.74-2.48c1.58.13 2.62 1.02 2.81 2.42l5.8 41.7h14.71a2.8 2.8 0 0 1 2.8 2.8zm14.82-2.8h-8.86a2.81 2.81 0 0 0-2.8 2.8 2.8 2.8 0 0 0 2.8 2.8h8.86c1.54 0 2.8-1.25 2.8-2.8 0-1.54-1.26-2.8-2.8-2.8zm19.08 0h-9.43a2.81 2.81 0 0 0-2.8 2.8c0 1.55 1.27 2.8 2.8 2.8h9.43c1.54 0 2.8-1.25 2.8-2.8 0-1.54-1.26-2.8-2.8-2.8z" />
             </svg>

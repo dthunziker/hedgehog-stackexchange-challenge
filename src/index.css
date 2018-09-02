@@ -73,6 +73,33 @@ h3 {
     text-align: left;
 }
 
+.usr-name span {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+span.badge:before {
+    margin-right: 1px;
+    width: 7px;
+    height: 7px;
+    content: ' ';
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+span.silver:before {
+    background: #8c9298;
+}
+
+span.bronze:before {
+    background: #c38b5f;
+}
+
+span.gold:before {
+    background: #cda400;
+}
+
 .usr-points-week {
     grid-column: 6/8;
 }
