@@ -64,6 +64,10 @@ h3 {
     font-size: .75em;
 }
 
+.user-info span {
+    font-size: .9em;
+}
+
 .usr-name {
     grid-column: 1 / 6;
     text-align: left;

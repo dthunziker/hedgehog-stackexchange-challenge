@@ -9,6 +9,7 @@ import ReactBodymovin from 'react-bodymovin'
 import animation from './logo.json'
 
 const loadDelayMs = 2000;
+const fadeInMs = 1200;
 
 const API = "https://api.stackexchange.com/2.2/users/{ids}?order=desc&sort=reputation&site=sitecore&filter=!9Z(-woBMT"
 
@@ -28,7 +29,7 @@ const Wrapper = posed.div({
     opacity: 1,
     transition: {
       default: {
-        duration: 1200,
+        duration: fadeInMs,
         type: 'tween',
         ease: 'anticipate'
       }
@@ -40,7 +41,7 @@ const Item = posed.div({
   flip: {
     transition: {
       default: {
-        duration: 1200,
+        duration: fadeInMs,
         type: 'tween',
         ease: 'anticipate'
       }
@@ -89,9 +90,9 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: db.users.map((id) => ({ user_id: id })),
-      isLoading: false,
+      isLoading: true,
       error: false,
+      users: db.users.map((id) => ({ user_id: id })),
       sortBy: "week"
     };
     this.handleChange = this.handleChange.bind(this);
@@ -100,7 +101,6 @@ class Dashboard extends React.Component {
   componentDidMount() {
 
     document.title = "Hedgehog StackExchange Challenge";
-    this.setState({ isLoading: true });
 
     let users = sessionStorage.getItem('users')
     if (users) {
@@ -123,10 +123,12 @@ class Dashboard extends React.Component {
           });
         }, loadDelayMs);
       })
-      .catch(this.setState({
-        isLoading: false,
-        error: true
-      }));
+      .catch(() => {
+        this.setState({
+          isLoading: false,
+          error: true
+        })
+      });
 
   }
 
