@@ -54,9 +54,9 @@ const Rep = ({ data }) => {
     return (
       <div>
         <span title="Overall reputation">{data.reputation}</span>
-        <span className="badge bronze" title="Bronze badges">{data.badge_counts.bronze}</span>
-        <span className="badge silver" title="Silver badges">{data.badge_counts.silver}</span>
-        <span className="badge gold" title="Gold badges">{data.badge_counts.gold}</span>
+        <span className="badge bronze" title="Bronze badges" style={{ display: data.badge_counts.bronze > 0 ? 'inline' : 'none' }}>{data.badge_counts.bronze}</span>
+        <span className="badge silver" title="Silver badges"style={{ display: data.badge_counts.silver > 0 ? 'inline' : 'none' }}>{data.badge_counts.silver}</span>
+        <span className="badge gold" title="Gold badges"style={{ display: data.badge_counts.gold > 0 ? 'inline' : 'none' }}>{data.badge_counts.gold}</span>
       </div>
     )
   }
@@ -124,7 +124,7 @@ class Dashboard extends React.Component {
     if (users) {
       setTimeout(() => {
         this.setState({
-          users: JSON.parse(users).sort((a, b) => sort(a, b, this.state.sortyBy)),
+          users: JSON.parse(users).sort((a, b) => sort(a, b, this.state.sortBy)),
           isLoading: false
         });
       }, loadDelayMs);
@@ -136,7 +136,7 @@ class Dashboard extends React.Component {
         sessionStorage.setItem('users', JSON.stringify(result.data.items));
         setTimeout(() => {
           this.setState({
-            users: result.data.items.sort((a, b) => sort(a, b, this.state.sortyBy)),
+            users: result.data.items.sort((a, b) => sort(a, b, this.state.sortBy)),
             isLoading: false
           });
         }, loadDelayMs);
@@ -164,7 +164,7 @@ class Dashboard extends React.Component {
         <ReactBodymovin options={bodymovinOptions} />
         <h1>Hedgehog StackExchange Challenge</h1>
         <div className="leader-board">
-          <Wrapper initialPose="hidden" pose={this.state.isLoading ? "hidden" : "fadeIn"}>
+          <Wrapper className="wrapper" initialPose="hidden" pose={this.state.isLoading ? "hidden" : "fadeIn"}>
             <p className="sort">
               Sort by <input type="radio" name="sort" value="week" id="week" onChange={this.handleChange} checked={this.state.sortBy === 'week'} />
               <label htmlFor="week">week</label> or <input type="radio" name="sort" value="month" id="month" onChange={this.handleChange} checked={this.state.sortBy === 'month'} />
