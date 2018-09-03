@@ -35,6 +35,10 @@ h3 {
     margin: 2em 0;
 }
 
+.wrapper {
+    opacity: 0;
+}
+
 .usr {
     min-height: calc(4em + 8px);
     margin-left: 2em;
