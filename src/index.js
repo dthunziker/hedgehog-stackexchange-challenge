@@ -7,6 +7,7 @@ import './index.css';
 import db from './users.json';
 import ReactBodymovin from 'react-bodymovin'
 import animation from './logo.json'
+import poop from './poop.png'
 
 const loadDelayMs = 2000;
 const fadeInMs = 1200;
@@ -55,8 +56,8 @@ const Rep = ({ data }) => {
       <div>
         <span title="Overall reputation">{data.reputation}</span>
         <span className="badge bronze" title="Bronze badges" style={{ display: data.badge_counts.bronze > 0 ? 'inline' : 'none' }}>{data.badge_counts.bronze}</span>
-        <span className="badge silver" title="Silver badges"style={{ display: data.badge_counts.silver > 0 ? 'inline' : 'none' }}>{data.badge_counts.silver}</span>
-        <span className="badge gold" title="Gold badges"style={{ display: data.badge_counts.gold > 0 ? 'inline' : 'none' }}>{data.badge_counts.gold}</span>
+        <span className="badge silver" title="Silver badges" style={{ display: data.badge_counts.silver > 0 ? 'inline' : 'none' }}>{data.badge_counts.silver}</span>
+        <span className="badge gold" title="Gold badges" style={{ display: data.badge_counts.gold > 0 ? 'inline' : 'none' }}>{data.badge_counts.gold}</span>
       </div>
     )
   }
@@ -67,13 +68,25 @@ const Rep = ({ data }) => {
   }
 }
 
+function getProfileImage(data) {
+  if (data.about_me) {
+    if (
+      data.about_me.toLowerCase().indexOf('hedgehog') > 0 || 
+      data.about_me.toLowerCase().indexOf('hhog.com') > 0 ||
+      data.about_me.toLowerCase().indexOf('hhogdev.com') > 0) {
+      return data.profile_image;
+    }
+  }
+  return poop;
+}
+
 class User extends React.Component {
   render() {
     return (
       <div className="usr">
         <a
           className="usr-img"
-          style={{ backgroundImage: "url(" + this.props.data.profile_image + ")" }}
+          style={{ backgroundImage: "url(" + getProfileImage(this.props.data) + ")" }}
           href={this.props.data.link}
           target="_blank">
         </a>
